@@ -1,0 +1,16 @@
+{
+  "name": "azure-local-fit-api",
+  "version": "1.0.0",
+  "description": "API backend for the Azure Local fit assessment tool",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.1",
+    "@azure/data-tables": "^13.2.2"
+  },
+  "devDependencies": {
+    "azure-functions-core-tools": "^4.0.5907"
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Signal — Azure Local Fit Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">&#9670;</span>
+    <span class="brand-text">SIGNAL</span>
+    <span class="brand-sub">Azure Local Fit Assessment</span>
+  </div>
+  <nav class="tabs">
+    <button class="tab-btn active" data-view="assess">New Assessment</button>
+    <button class="tab-btn" data-view="history">History</button>
+  </nav>
+</header>
+
+<main>
+
+  <section id="view-assess" class="view active">
+    <div class="assess-layout">
+
+      <div class="panel questionnaire-panel">
+
+        <div id="intake-step" class="step active">
+          <p class="eyebrow">00 &mdash; Client</p>
+          <h1>Who are we assessing?</h1>
+          <div class="field">
+            <label for="clientName">Client / organization name</label>
+            <input type="text" id="clientName" placeholder="e.g. Meridian Manufacturing" />
+          </div>
+          <div class="field">
+            <label for="assessorName">Your name</label>
+            <input type="text" id="assessorName" placeholder="e.g. Jerry" />
+          </div>
+          <div class="field">
+            <label for="industry">Industry (optional)</label>
+            <input type="text" id="industry" placeholder="e.g. manufacturing, healthcare, retail" />
+          </div>
+          <button class="btn-primary" id="startBtn">Begin assessment &rarr;</button>
+        </div>
+
+        <div id="questions-wrap"></div>
+
+        <div id="result-step" class="step">
+          <p class="eyebrow">Result</p>
+          <h1 id="verdictTitle">&mdash;</h1>
+          <p id="verdictSummary" class="verdict-summary"></p>
+
+          <div class="breakdown">
+            <p class="breakdown-label">Signal breakdown</p>
+            <div id="breakdownList"></div>
+          </div>
+
+          <div class="result-actions">
+            <button class="btn-secondary" id="restartBtn">New assessment</button>
+            <button class="btn-primary" id="saveBtn">Save to history</button>
+          </div>
+          <p id="saveStatus" class="save-status"></p>
+        </div>
+
+      </div>
+
+      <div class="panel gauge-panel">
+        <p class="gauge-caption">CLOUD &#10231; LOCAL</p>
+        <div id="gaugeSvgWrap"></div>
+        <p class="gauge-readout"><span id="gaugeValue">0</span><span class="gauge-unit">% signal</span></p>
+        <p class="gauge-hint" id="gaugeHint">Answer questions to see the signal shift.</p>
+
+        <div class="legend">
+          <div class="legend-item"><span class="dot dot-cloud"></span> Favors public Azure</div>
+          <div class="legend-item"><span class="dot dot-local"></span> Favors Azure Local</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="view-history" class="view">
+    <p class="eyebrow">Archive</p>
+    <h1>Past assessments</h1>
+    <p class="history-hint">Every saved assessment across your team lands here.</p>
+    <div id="historyList" class="history-list">
+      <p class="empty-state">Loading&hellip;</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
