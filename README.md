@@ -23,7 +23,25 @@ guidance on when Azure Local fits: connectivity reliability, data sovereignty,
 latency sensitivity, number of distributed sites, state of existing
 infrastructure (e.g. aging VMware), on-site IT capability, budget model
 (CapEx vs. OpEx), and need for cloud elasticity. Edit that file directly to
-add, remove, or reweight questions — no code changes needed elsewhere.
+add, remove, or reweight questions — no code changes needed elsewhere. Each
+question also has a `category` (grouped in `CATEGORIES` at the top of the
+file), used to roll up the detailed report below.
+
+## Detailed report & PDF export
+
+Every result includes a **"Show detailed report"** toggle with:
+- **Confidence** — how decisive the answers were overall
+- **Category scores** — average lean per theme (Connectivity & Latency,
+  Compliance & Data, Scale & Topology, Operations & Investment)
+- **Supporting factors** — the answers driving the verdict
+- **Weakest factors** — the answers working against or softening it
+- **Recommended next steps** — verdict-specific action items
+
+An **"Export as PDF"** button on the result screen generates a
+client-ready PDF of the full report (summary, breakdown, category scores,
+factors, and recommendations) entirely client-side via
+[jsPDF](https://github.com/parallax/jsPDF), loaded from cdnjs — no backend
+involved, so exporting works even offline once the page is loaded.
 
 ## Architecture
 

@@ -1,12 +1,21 @@
 // Scoring model:
 // Each option has a `lean` from -2 (favors public Azure) to +2 (favors Azure Local).
-// Each question has a `weight` (relative importance). Weighted sum is normalized to a
-// -100..+100 "signal" score. See app.js for bucketing into a verdict.
+// Each question has a `weight` (relative importance) and a `category` (used to group
+// the detailed report). Weighted sum is normalized to a -100..+100 "signal" score.
+// See app.js for bucketing into a verdict.
+
+const CATEGORIES = {
+  "connectivity-latency": "Connectivity & Latency",
+  "compliance-data": "Compliance & Data",
+  "scale-topology": "Scale & Topology",
+  "operations-investment": "Operations & Investment"
+};
 
 const QUESTIONS = [
   {
     id: "connectivity",
     weight: 3,
+    category: "connectivity-latency",
     title: "How reliable is internet connectivity at the site(s)?",
     help: "Azure Local tolerates brief outages, but the case gets much stronger the less dependable the link is.",
     options: [
@@ -19,6 +28,7 @@ const QUESTIONS = [
   {
     id: "sovereignty",
     weight: 3,
+    category: "compliance-data",
     title: "How strict are the data residency or compliance requirements?",
     help: "Think regulated industries, government, or contractual data-locality clauses.",
     options: [
@@ -31,6 +41,7 @@ const QUESTIONS = [
   {
     id: "latency",
     weight: 3,
+    category: "connectivity-latency",
     title: "How latency-sensitive are the core workloads?",
     help: "Real-time control systems and transactional floors benefit most from local compute.",
     options: [
@@ -42,6 +53,7 @@ const QUESTIONS = [
   {
     id: "sites",
     weight: 2,
+    category: "scale-topology",
     title: "How many distributed sites need infrastructure?",
     help: "Azure Local shines when you need a standardized platform repeated across many edge locations.",
     options: [
@@ -53,6 +65,7 @@ const QUESTIONS = [
   {
     id: "existing-infra",
     weight: 2,
+    category: "operations-investment",
     title: "What's the state of their existing infrastructure?",
     help: "Aging on-prem virtualization (especially VMware) nearing end-of-life is a classic Azure Local trigger.",
     options: [
@@ -64,6 +77,7 @@ const QUESTIONS = [
   {
     id: "it-capability",
     weight: 2,
+    category: "operations-investment",
     title: "What IT operational capability exists on-site (or via a partner/MSP)?",
     help: "Azure Local still means real hardware -- firmware, lifecycle, physical maintenance -- someone has to own that.",
     options: [
@@ -75,6 +89,7 @@ const QUESTIONS = [
   {
     id: "budget",
     weight: 2,
+    category: "operations-investment",
     title: "What's their preferred spending model?",
     help: "Azure Local requires validated hardware -- a CapEx layer on top of the usual Azure OpEx billing.",
     options: [
@@ -86,6 +101,7 @@ const QUESTIONS = [
   {
     id: "elasticity",
     weight: 3,
+    category: "scale-topology",
     title: "How much do workloads need global elasticity or the broad Azure PaaS catalog?",
     help: "If they need to burst globally or lean on many first-party Azure services, public cloud still wins.",
     options: [

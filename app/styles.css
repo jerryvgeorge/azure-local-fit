@@ -145,7 +145,33 @@ h1{font-family:var(--display); font-size:28px; font-weight:600; margin:0 0 20px;
 .breakdown-bar-fill.local{background:var(--local); left:50%;}
 .breakdown-bar-mid{position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--text-faint);}
 
-.result-actions{display:flex; gap:12px; margin-top:28px;}
+.btn-toggle{
+  background:none; border:none; color:var(--local); font-family:var(--mono); font-size:12px;
+  letter-spacing:0.03em; cursor:pointer; padding:6px 0; margin-top:6px;
+}
+.btn-toggle:hover{text-decoration:underline;}
+
+.detailed-report{display:none; margin-top:8px; padding-top:20px; border-top:1px solid var(--line);}
+.detailed-report.open{display:block;}
+.report-section{margin-bottom:24px;}
+.report-section:last-child{margin-bottom:0;}
+.report-text{color:var(--text-dim); font-size:13.5px; line-height:1.6; margin:0;}
+.report-list{margin:0; padding-left:18px; color:var(--text-dim); font-size:13.5px; line-height:1.7;}
+.report-list li{margin-bottom:4px;}
+.report-list.empty-note{list-style:none; padding-left:0; color:var(--text-faint); font-style:italic;}
+
+.category-row{margin-bottom:14px;}
+.category-row:last-child{margin-bottom:0;}
+.category-row-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+.category-name{font-size:13px; color:var(--text-dim);}
+.category-score{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+.category-bar-track{height:6px; background:var(--line); border-radius:3px; position:relative; overflow:hidden;}
+.category-bar-fill{position:absolute; top:0; bottom:0; border-radius:3px;}
+.category-bar-fill.cloud{background:var(--cloud); right:50%;}
+.category-bar-fill.local{background:var(--local); left:50%;}
+.category-bar-mid{position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--text-faint);}
+
+.result-actions{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;}
 .save-status{font-family:var(--mono); font-size:12px; color:var(--text-dim); margin-top:14px;}
 
 .history-hint{color:var(--text-dim); font-size:14px; margin-top:-14px; margin-bottom:28px;}
